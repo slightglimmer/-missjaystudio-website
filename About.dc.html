@@ -14,7 +14,13 @@
 html,body{margin:0;padding:0;background:#f6f2ec;}
 a{color:#b06a4a;text-decoration:none;}
 a:hover{color:#96543a;}
+  @media (max-width: 680px) {
+  [style*="grid-template-columns:"] {
+    grid-template-columns: 1fr !important;
+  }
+}
 </style>
+  
 </helmet>
 <div style="min-height:100vh;background:#f6f2ec;color:#2e2a25;font-family:'Karla',sans-serif;font-size:17px;line-height:1.6;">
   <header style="display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1080px;margin:0 auto;padding:28px 32px;">
