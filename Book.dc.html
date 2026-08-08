@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#f6f2ec;}
+a{color:#b06a4a;text-decoration:none;}
+a:hover{color:#96543a;}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#f6f2ec;color:#2e2a25;font-family:'Karla',sans-serif;font-size:17px;line-height:1.6;">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1080px;margin:0 auto;padding:28px 32px;">
+    <a href="Home.dc.html" style="font-family:'Libre Caslon Text',serif;font-size:22px;color:#2e2a25;letter-spacing:0.02em;">MissJay<span style="color:#b06a4a;"> Studio</span></a>
+    <nav style="display:flex;align-items:center;gap:28px;font-size:15px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;">
+      <a href="About.dc.html" style="color:#6f675d;" style-hover="color:#b06a4a;">About</a>
+      <a href="Pricing.dc.html" style="color:#6f675d;" style-hover="color:#b06a4a;">Pricing</a>
+      <a href="Book.dc.html" style="background:#96543a;color:#fdfbf8;padding:10px 22px;border-radius:2px;">Book</a>
+    </nav>
+  </header>
+
+  <section style="max-width:1080px;margin:0 auto;padding:56px 32px 80px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <p style="margin:0;font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#b06a4a;">Booking</p>
+      <h1 style="margin:0;font-family:'Libre Caslon Text',serif;font-size:44px;line-height:1.15;font-weight:400;">Request an appointment</h1>
+      <p style="margin:0;color:#6f675d;text-wrap:pretty;">Send a request and Jay will text you back to confirm a time. Prefer to talk? Call or text directly:</p>
+      <a href="tel:7344894706" style="font-family:'Libre Caslon Text',serif;font-size:28px;color:#2e2a25;" style-hover="color:#b06a4a;">734-489-4706</a>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;padding:24px;background:#fdfbf8;border:1px solid #e4dcd1;border-radius:2px;color:#6f675d;font-size:15px;">
+        <div style="display:flex;gap:12px;"><span style="color:#b06a4a;font-weight:700;">·</span><span>Home studio in Redford, off 8 Mile &amp; Telegraph — exact address shared when confirmed</span></div>
+        <div style="display:flex;gap:12px;"><span style="color:#b06a4a;font-weight:700;">·</span><span>Travel appointments: free nearby, small fee for longer trips</span></div>
+        <div style="display:flex;gap:12px;"><span style="color:#b06a4a;font-weight:700;">·</span><span>Seniors &amp; veterans: 20% off — mention it in your request</span></div>
+      </div>
+    </div>
+
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fdfbf8;border:1px solid #e4dcd1;border-radius:2px;padding:48px 40px;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+        <h2 style="margin:0;font-family:'Libre Caslon Text',serif;font-size:30px;font-weight:400;">Request received ✓</h2>
+        <p style="margin:0;color:#6f675d;text-wrap:pretty;">Thanks, {{ sentName }}! Your request is ready to send by text — a message to Jay should have opened on your phone. If it didn't, just call or text <a href="tel:7344894706" style="font-weight:700;">734-489-4706</a> with your request.</p>
+        <button onClick="{{ reset }}" style="background:none;border:1px solid #e4dcd1;border-radius:2px;padding:10px 22px;font-family:'Karla',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6f675d;cursor:pointer;" style-hover="border-color:#b06a4a;color:#b06a4a;">Send another request</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="background:#fdfbf8;border:1px solid #e4dcd1;border-radius:2px;padding:40px;display:flex;flex-direction:column;gap:22px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6f675d;">Name
+            <input name="name" required placeholder="Your name" style="border:1px solid #e4dcd1;border-radius:2px;padding:12px 14px;font-family:'Karla',sans-serif;font-size:16px;color:#2e2a25;background:#f6f2ec;outline:none;" style-focus="border-color:#b06a4a;">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6f675d;">Phone
+            <input name="phone" type="tel" required placeholder="(313) 555-0123" style="border:1px solid #e4dcd1;border-radius:2px;padding:12px 14px;font-family:'Karla',sans-serif;font-size:16px;color:#2e2a25;background:#f6f2ec;outline:none;" style-focus="border-color:#b06a4a;">
+          </label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6f675d;">Service
+          <select name="service" required style="border:1px solid #e4dcd1;border-radius:2px;padding:12px 14px;font-family:'Karla',sans-serif;font-size:16px;color:#2e2a25;background:#f6f2ec;outline:none;">
+            <option value="">Choose a service…</option>
+            <option>Silk press</option>
+            <option>Silk press + trim</option>
+            <option>Wash &amp; style</option>
+            <option>Deep conditioning treatment</option>
+            <option>Trim / cut</option>
+            <option>Color</option>
+            <option>Kids' style</option>
+            <option>Men's grooming</option>
+            <option>Senior in-home visit</option>
+          </select>
+        </label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6f675d;">Preferred date
+            <input name="date" type="date" required style="border:1px solid #e4dcd1;border-radius:2px;padding:12px 14px;font-family:'Karla',sans-serif;font-size:16px;color:#2e2a25;background:#f6f2ec;outline:none;">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6f675d;">Preferred time
+            <select name="time" style="border:1px solid #e4dcd1;border-radius:2px;padding:12px 14px;font-family:'Karla',sans-serif;font-size:16px;color:#2e2a25;background:#f6f2ec;outline:none;">
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+              <option>Flexible</option>
+            </select>
+          </label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6f675d;">Where
+          <select name="where" style="border:1px solid #e4dcd1;border-radius:2px;padding:12px 14px;font-family:'Karla',sans-serif;font-size:16px;color:#2e2a25;background:#f6f2ec;outline:none;">
+            <option>At the studio (Redford)</option>
+            <option>Travel to me</option>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6f675d;">Notes (optional)
+          <textarea name="notes" rows="3" placeholder="Anything Jay should know — hair length, senior/veteran discount, travel address area…" style="border:1px solid #e4dcd1;border-radius:2px;padding:12px 14px;font-family:'Karla',sans-serif;font-size:16px;color:#2e2a25;background:#f6f2ec;outline:none;resize:vertical;" style-focus="border-color:#b06a4a;"></textarea>
+        </label>
+        <button type="submit" style="background:#b06a4a;color:#fdfbf8;border:none;border-radius:2px;padding:16px 30px;font-family:'Karla',sans-serif;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;font-size:14px;cursor:pointer;" style-hover="background:#96543a;">Send request</button>
+        <p style="margin:0;color:#6f675d;font-size:14px;text-align:center;">Sends a pre-filled text to Jay — she'll reply to confirm.</p>
+      </form>
+    </sc-if>
+  </section>
+
+  <footer style="max-width:1080px;margin:0 auto;padding:24px 32px 48px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;color:#6f675d;font-size:15px;border-top:1px solid #e4dcd1;">
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:18px;color:#2e2a25;">MissJay Studio</span>
+      <span>Redford, MI · off 8 Mile &amp; Telegraph</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+      <a href="tel:7344894706" style="color:#2e2a25;font-weight:700;">734-489-4706</a>
+      <span>Call or text to book</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, name: "" };
+  renderVals() {
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      sentName: this.state.name,
+      reset: () => this.setState({ sent: false, name: "" }),
+      submit: (e) => {
+        e.preventDefault();
+        const f = new FormData(e.target);
+        const msg = `Hi Jay! I'd like to book: ${f.get("service")}. Name: ${f.get("name")}, Phone: ${f.get("phone")}. Preferred: ${f.get("date")} (${f.get("time")}), ${f.get("where")}.` + (f.get("notes") ? ` Notes: ${f.get("notes")}` : "");
+        this.setState({ sent: true, name: f.get("name") });
+        window.location.href = "sms:7344894706?&body=" + encodeURIComponent(msg);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
